@@ -1,0 +1,8 @@
+﻿## Interface: 60100
+## Title: Mageify
+## Notes: Rotation Parser
+## Author: Abarcine
+## Version: v1.0
+## DefaultState: enabled
+
+Mageify.lua
