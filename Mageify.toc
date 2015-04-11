@@ -6,3 +6,7 @@
 ## DefaultState: enabled
 
 Mageify.lua
+
+Aura.lua
+Spell.lua
+Player.lua
