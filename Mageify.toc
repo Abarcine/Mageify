@@ -10,3 +10,4 @@ Mageify.lua
 Aura.lua
 Spell.lua
 Player.lua
+Interface.lua

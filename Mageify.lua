@@ -17,10 +17,12 @@ Mageify.events = {}
 -- Player is entering combat here
 function Mageify.events:PLAYER_REGEN_DISABLED()
   self.state.isInCombat = true
+  self.frames.main:Show()
 end
 
 function Mageify.events:PLAYER_REGEN_ENABLED()
   self.state.isInCombat = false
+  self.frames.main:Hide()
 end
 
 -- AddOn Initialization
@@ -73,7 +75,11 @@ function Mageify:SuggestSpell()
   end
 
   if spell ~= self.state.lastSpell then
-    print(spell)
+    local _name, _rank, icon = GetSpellInfo(spell)
+    if not icon then
+      print("Error Icon not returned for spell", spell)
+    end
+    Mageify.frames.main.texture:SetTexture(icon)
     self.state.lastSpell = spell
   end
 end
@@ -84,7 +90,7 @@ function Mageify:BurnPhase(player)
   elseif player:Mana() > .5 then
     return "Arcane Blast"
   elseif player:Mana() < .5 then
-    return "Evocate Now!"
+    return "Evocation"
   end
 end
 
