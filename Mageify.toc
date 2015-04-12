@@ -4,6 +4,7 @@
 ## Author: Abarcine
 ## Version: v1.0
 ## DefaultState: enabled
+## SavedVariablesPerCharacter: MageifyState
 
 Mageify.lua
 

@@ -1,4 +1,5 @@
 Mageify = {}
+MageifyState = {}
 
 -- Global State
 -- ------------
@@ -24,6 +25,25 @@ function Mageify.events:PLAYER_REGEN_ENABLED()
   self.state.isInCombat = false
   self.frames.main:Hide()
 end
+
+function Mageify.events:PLAYER_LOGOUT()
+  local point, relativeTo, relativePoint, xOffset, yOffset = Mageify.frames.main:GetPoint(1)
+  MageifyState.mainFramePoint = {
+    point         = point,
+    relativePoint = relativePoint,
+    xOffset       = xOffset,
+    yOffset       = yOffset,
+  }
+end
+
+function Mageify.events:ADDON_LOADED()
+  local framePoint = MageifyState.mainFramePoint
+  if not framePoint then
+    return
+  end
+  Mageify.frames.main:SetPoint(framePoint.point, nil, framePoint.relativePoint, framePoint.xOffset, framePoint.yOffset)
+end
+
 
 -- AddOn Initialization
 
